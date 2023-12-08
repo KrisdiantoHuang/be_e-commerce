@@ -10,9 +10,9 @@ $res = [
       ]
   ]
       ];
-$id_kategori = $_POST['id_kategori'];
+
 $nama_kategori = $_POST['nama_kategori'];
-$q = mysqli_query($conn, "INSERT INTO kategori_tb (id_kategori, nama_kategori) VALUES ('$id_kategori', '$nama_kategori')");
+$q = mysqli_query($conn, "INSERT INTO kategori_tb (nama_kategori) VALUES ('$nama_kategori')");
 
 if ($q) {
 
