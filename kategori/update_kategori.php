@@ -15,14 +15,16 @@ $id_kategori = $_GET['id_kategori'];
 // $id_kategori = $_POST['id_kategori'];
 $nama_kategori = $_POST['nama_kategori'];
 
-$q = mysqli_query($conn, "SELECT * FROM kategori_tb WHERE id_kategori='$id_kategori'");
-$ary = mysqli_fetch_array($q);
+$q = mysqli_query($conn, "SELECT * FROM kategori_tb");
+while ($row = mysqli_fetch_array($q)) {
 
-// Gunakan prepared statements untuk mencegah SQL injection
-$stmt = $conn->prepare("UPDATE kategori_tb SET nama_kategori = ? WHERE id_kategori = ?");
-$stmt->bind_param("si", $nama_kategori, $id_kategori);
+  $row['nama_kategori'];
 
-if ($stmt->execute()) {
+}
+
+$query = "UPDATE kategori_tb SET nama_kategori='$nama_kategori' where id_kategori='$id_kategori' ";
+$result=mysqli_query($conn,$query);
+if ($result) {
   $res['msg'] = "Data berhasil diupdate";
   $res['body']['data']['nama_kategori'] = $nama_kategori;
 } else {
@@ -31,8 +33,7 @@ if ($stmt->execute()) {
   $res['body']['error'] = "Kesalahan validasi input";
 }
 
-$stmt->close();
-$conn->close();
+
 
 echo json_encode($res);
 ?>
