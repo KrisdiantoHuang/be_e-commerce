@@ -11,6 +11,7 @@ $res = [
   ]
 ];
 
+
 $id_kategori = $_GET['id_kategori'];
 // $id_kategori = $_POST['id_kategori'];
 $nama_kategori = $_POST['nama_kategori'];
