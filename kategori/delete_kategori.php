@@ -7,7 +7,7 @@ $res = [
   "body" => "",
 ];
 
-$id_kategori = $_GET['id_kategori'];
+$id_kategori = isset($_POST['id_kategori']) ? $_POST['id_kategori'] : null;
 
 $q = mysqli_query($conn, "DELETE FROM kategori_tb WHERE id_kategori='$id_kategori'");
 
