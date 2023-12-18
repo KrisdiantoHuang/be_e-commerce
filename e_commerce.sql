@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 18, 2023 at 04:56 PM
+-- Generation Time: Dec 18, 2023 at 05:12 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `barang_tb` (
-  `gambar_brg` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `gambar_brg` varchar(100) COLLATE utf8mb4_bin NOT NULL,
   `kode_brg` int NOT NULL,
-  `nama_brg` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `nama_brg` varchar(100) COLLATE utf8mb4_bin NOT NULL,
   `harga_brg` int NOT NULL,
-  `nama_kategori` int NOT NULL,
+  `nama_kategori` varchar(100) COLLATE utf8mb4_bin NOT NULL,
   `stok_brg` int NOT NULL,
-  `deskripsi_brg` varchar(900) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
+  `deskripsi_brg` varchar(900) COLLATE utf8mb4_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
@@ -66,8 +66,7 @@ INSERT INTO `kategori_tb` (`id_kategori`, `nama_kategori`) VALUES
 -- Indexes for table `barang_tb`
 --
 ALTER TABLE `barang_tb`
-  ADD PRIMARY KEY (`kode_brg`),
-  ADD UNIQUE KEY `nama_kategori` (`nama_kategori`);
+  ADD PRIMARY KEY (`kode_brg`);
 
 --
 -- Indexes for table `kategori_tb`
@@ -80,20 +79,16 @@ ALTER TABLE `kategori_tb`
 --
 
 --
+-- AUTO_INCREMENT for table `barang_tb`
+--
+ALTER TABLE `barang_tb`
+  MODIFY `kode_brg` int NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `kategori_tb`
 --
 ALTER TABLE `kategori_tb`
   MODIFY `id_kategori` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4013;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `barang_tb`
---
-ALTER TABLE `barang_tb`
-  ADD CONSTRAINT `barang_tb_ibfk_1` FOREIGN KEY (`nama_kategori`) REFERENCES `kategori_tb` (`id_kategori`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
