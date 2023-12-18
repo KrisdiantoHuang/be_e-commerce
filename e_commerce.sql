@@ -32,7 +32,7 @@ CREATE TABLE `barang_tb` (
   `kode_brg` int NOT NULL,
   `nama_brg` varchar(100) COLLATE utf8mb4_bin NOT NULL,
   `harga_brg` int NOT NULL,
-  `id_kategori` int NOT NULL,
+  `nama_kategori` int NOT NULL,
   `stok_brg` int NOT NULL,
   `deskripsi_brg` varchar(900) COLLATE utf8mb4_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
@@ -66,8 +66,7 @@ INSERT INTO `kategori_tb` (`id_kategori`, `nama_kategori`) VALUES
 -- Indexes for table `barang_tb`
 --
 ALTER TABLE `barang_tb`
-  ADD PRIMARY KEY (`kode_brg`),
-  ADD UNIQUE KEY `nama_kategori` (`id_kategori`);
+  ADD PRIMARY KEY (`kode_brg`);
 
 --
 -- Indexes for table `kategori_tb`
@@ -92,9 +91,9 @@ ALTER TABLE `kategori_tb`
 --
 -- Constraints for table `barang_tb`
 --
-ALTER TABLE `barang_tb`
-  ADD CONSTRAINT `barang_tb_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori_tb` (`id_kategori`);
-COMMIT;
+-- ALTER TABLE `barang_tb`
+--   ADD CONSTRAINT `barang_tb_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori_tb` (`id_kategori`);
+-- COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
