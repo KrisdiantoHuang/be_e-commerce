@@ -7,7 +7,7 @@ $res = [
   "body" => "",
 ];
 
-$kode_brg = $_GET['kode_brg'];
+$kode_brg = isset($_POST['kode_brg']) ? $_POST['kode_brg'] : null;
 
 $d = mysqli_query($conn, "SELECT gambar_brg FROM barang_tb WHERE kode_brg='$kode_brg'");
 $ary = mysqli_fetch_array($d);
