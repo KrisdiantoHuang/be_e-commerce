@@ -2,8 +2,8 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhgit ost:3306
--- Generation Time: Nov 12, 2023 at 11:28 AM
+-- Host: localhost:3306
+-- Generation Time: Dec 18, 2023 at 04:56 PM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -30,11 +30,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `barang_tb` (
   `gambar_brg` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `kode_brg` int NOT NULL,
-  `nama_brg` varchar(100) COLLATE utf8mb4_bin NOT NULL,
+  `nama_brg` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `harga_brg` int NOT NULL,
   `nama_kategori` int NOT NULL,
   `stok_brg` int NOT NULL,
-  `deskripsi_brg` varchar(900) COLLATE utf8mb4_bin NOT NULL
+  `deskripsi_brg` varchar(900) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- --------------------------------------------------------
@@ -45,7 +45,7 @@ CREATE TABLE `barang_tb` (
 
 CREATE TABLE `kategori_tb` (
   `id_kategori` int NOT NULL,
-  `nama_kategori` varchar(200) COLLATE utf8mb4_bin NOT NULL
+  `nama_kategori` varchar(200) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
@@ -66,7 +66,8 @@ INSERT INTO `kategori_tb` (`id_kategori`, `nama_kategori`) VALUES
 -- Indexes for table `barang_tb`
 --
 ALTER TABLE `barang_tb`
-  ADD PRIMARY KEY (`kode_brg`);
+  ADD PRIMARY KEY (`kode_brg`),
+  ADD UNIQUE KEY `nama_kategori` (`nama_kategori`);
 
 --
 -- Indexes for table `kategori_tb`
@@ -91,9 +92,9 @@ ALTER TABLE `kategori_tb`
 --
 -- Constraints for table `barang_tb`
 --
--- ALTER TABLE `barang_tb`
---   ADD CONSTRAINT `barang_tb_ibfk_1` FOREIGN KEY (`id_kategori`) REFERENCES `kategori_tb` (`id_kategori`);
--- COMMIT;
+ALTER TABLE `barang_tb`
+  ADD CONSTRAINT `barang_tb_ibfk_1` FOREIGN KEY (`nama_kategori`) REFERENCES `kategori_tb` (`id_kategori`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
