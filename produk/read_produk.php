@@ -11,7 +11,7 @@ $res = [
         "kode_brg" => "",
         "nama_brg" => "",
         "harga_brg" => "",
-        "id_kategori" => "",
+        "nama_kategori" => "",
         "stok_brg" => "",
         "deskripsi_brg" => "",
       ]
@@ -32,7 +32,7 @@ while ($row = mysqli_fetch_array($q)) {
     'kode_brg' => $row['kode_brg'],
     'nama_brg' => $row['nama_brg'],
     'harga_brg' => $row['harga_brg'],
-    'id_kategori' => $row['id_kategori'],
+    'nama_kategori' => $row['nama_kategori'],
     'stok_brg' => $row['stok_brg'],
     'deskripsi_brg' => $row['deskripsi_brg'],
     
